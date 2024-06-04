@@ -1,8 +1,9 @@
 package format
 
 import (
-	"go-cipher/utils"
 	"strings"
+
+	"github.com/Hatchibombotar/go-cipher/utils"
 )
 
 type FormatOptions struct {

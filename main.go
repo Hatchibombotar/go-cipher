@@ -1,10 +1,10 @@
 package main
 
 import (
-	"go-cipher/analysis"
-	"go-cipher/cipher"
-	"go-cipher/format"
-	"go-cipher/utils"
+	"github.com/Hatchibombotar/go-cipher/analysis"
+	"github.com/Hatchibombotar/go-cipher/cipher"
+	"github.com/Hatchibombotar/go-cipher/format"
+	"github.com/Hatchibombotar/go-cipher/utils"
 )
 
 func main() {

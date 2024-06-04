@@ -2,9 +2,10 @@ package analysis
 
 import (
 	"fmt"
-	"go-cipher/format"
-	"go-cipher/utils"
 	"slices"
+
+	"github.com/Hatchibombotar/go-cipher/format"
+	"github.com/Hatchibombotar/go-cipher/utils"
 
 	"github.com/xuri/excelize/v2"
 )

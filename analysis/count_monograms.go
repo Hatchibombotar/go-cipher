@@ -1,8 +1,8 @@
 package analysis
 
 import (
-	"go-cipher/format"
-	"go-cipher/utils"
+	"github.com/Hatchibombotar/go-cipher/format"
+	"github.com/Hatchibombotar/go-cipher/utils"
 )
 
 func CountMonograms(text string) map[string]int {

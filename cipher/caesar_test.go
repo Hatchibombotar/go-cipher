@@ -1,8 +1,9 @@
 package cipher_test
 
 import (
-	"go-cipher/cipher"
 	"testing"
+
+	"github.com/Hatchibombotar/go-cipher/cipher"
 )
 
 func TestDecodeCaesar(t *testing.T) {

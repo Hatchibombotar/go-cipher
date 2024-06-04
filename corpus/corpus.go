@@ -3,8 +3,9 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"go-cipher/analysis"
-	"go-cipher/utils"
+
+	"github.com/Hatchibombotar/go-cipher/analysis"
+	"github.com/Hatchibombotar/go-cipher/utils"
 )
 
 func main() {

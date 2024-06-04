@@ -1,8 +1,9 @@
 package cipher
 
 import (
-	"go-cipher/utils"
 	"strings"
+
+	"github.com/Hatchibombotar/go-cipher/utils"
 )
 
 func DecodeCaesarCipher(text string, steps int) string {

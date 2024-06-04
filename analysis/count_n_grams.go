@@ -1,7 +1,7 @@
 package analysis
 
 import (
-	"go-cipher/format"
+	"github.com/Hatchibombotar/go-cipher/format"
 )
 
 func CountNGrams(text string, nGramSize int) map[string]int {

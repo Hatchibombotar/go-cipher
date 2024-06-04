@@ -1,4 +1,4 @@
-module go-cipher
+module github.com/Hatchibombotar/go-cipher
 
 go 1.22.0
 
