@@ -17,7 +17,7 @@ type AnalysisData struct {
 }
 
 func FullAnalysis(text string) AnalysisData {
-	corpus := format.FormatString(text, &format.FormatOptions{MakeLowercase: true, RemoveUnknown: true})
+	corpus := format.FormatString(text, &format.FormatOptions{CaseMode: format.LowerCaseFormatting, RemoveUnknown: true})
 	corpus_monograms := CountMonograms(corpus)
 	corpus_tetragrams := CountNGrams(corpus, 4)
 

@@ -14,7 +14,7 @@ func main() {
 
 	decoded := cipher.DecodeCaesarCipher(
 		format.FormatString(
-			challenge_1a, &format.FormatOptions{MakeLowercase: true, RemoveUnknown: false},
+			challenge_1a, &format.FormatOptions{CaseMode: format.LowerCaseFormatting, RemoveUnknown: false},
 		), 4,
 	)
 	analysis_challenge := analysis.FullAnalysis(decoded)

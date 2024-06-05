@@ -6,14 +6,25 @@ import (
 	"github.com/Hatchibombotar/go-cipher/utils"
 )
 
+type FormattingMode int
+
+const (
+	UnchangedCaseFormatting FormattingMode = iota
+	UpperCaseFormatting
+	LowerCaseFormatting
+	SentenceCaseFormatting
+)
+
 type FormatOptions struct {
-	MakeLowercase bool
+	CaseMode      FormattingMode
 	RemoveUnknown bool
 }
 
 func FormatString(str string, op *FormatOptions) string {
-	if op.MakeLowercase {
+	if op.CaseMode == LowerCaseFormatting {
 		str = strings.ToLower(str)
+	} else if op.CaseMode == UpperCaseFormatting {
+		str = strings.ToUpper(str)
 	}
 	new_str := ""
 	if op.RemoveUnknown {
