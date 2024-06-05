@@ -32,6 +32,19 @@ func TestFormatToLowercase(t *testing.T) {
 	}
 }
 
+func TestFormatToSentenceCase(t *testing.T) {
+	str := "hi there WHAT IS YOUR NAME? this is a sentence. NICE day huh! bye then."
+	expected := "Hi there what is your name? This is a sentence. Nice day huh! Bye then."
+	op := format.FormatOptions{
+		RemoveUnknown: false,
+		CaseMode:      format.SentenceCaseFormatting,
+	}
+	actual := format.FormatString(str, &op)
+	if expected != actual {
+		t.Fatalf("Expected: %s, Actual: %s", expected, actual)
+	}
+}
+
 func TestFormatUnchangedCase(t *testing.T) {
 	str := "Hello, World!"
 	op := format.FormatOptions{
