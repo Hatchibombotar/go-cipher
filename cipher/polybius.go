@@ -8,6 +8,9 @@ func DecodePolybiusCipher(text string, key string) (string, error) {
 	if len(key) != 25 {
 		return "", errors.New("polybius cipher only works with keys of length 25")
 	}
+	if len(text)%2 == 1 {
+		return "", errors.New("polybius cipher input must be of even length")
+	}
 	decoded := ""
 	for i := range len(text) / 2 {
 		row_char := text[2*i]
