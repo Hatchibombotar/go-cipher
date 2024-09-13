@@ -14,3 +14,12 @@ func TestInferSpaces(t *testing.T) {
 		t.Fatalf("Expected: %s, Actual: %s", expected, actual)
 	}
 }
+
+func TestInferSpacesWithNonAlpha(t *testing.T) {
+	str := "hello there, howareyoujodie?"
+	expected := "hello there, how are you jodie?"
+	actual := format.InferSpaces(str)
+	if expected != actual {
+		t.Fatalf("Expected: %s, Actual: %s", expected, actual)
+	}
+}

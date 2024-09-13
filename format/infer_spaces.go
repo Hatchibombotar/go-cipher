@@ -10,18 +10,56 @@ import (
 //go:embed words_by_frequency.txt
 var wordsByFrequency string
 
-// Function to infer spaces in a string without spaces.
-// Adapted from https://stackoverflow.com/a/11642687
-func InferSpaces(s string) string {
-	words := strings.Split(wordsByFrequency, "\n")
-	wordCost := make(map[string]float64)
-	maxWord := 0
+var populatedWordData bool = false
+var maxWord int = 0
+var wordCost map[string]float64
 
-	for i, word := range words {
-		if len(word) > maxWord {
-			maxWord = len(word)
+// Function to infer spaces in a string without spaces.
+func InferSpaces(s string) string {
+	splitlist := []string{}
+	wordStart := 0
+
+	for i, char := range s {
+		if ('a' <= char && char <= 'z') || ('A' <= char && char <= 'Z') {
+
+		} else {
+			splitlist = append(splitlist, s[wordStart:i])
+			splitlist = append(splitlist, s[i:i+1])
+			wordStart = i + 1
 		}
-		wordCost[word] = math.Log(float64(i+1) * math.Log(float64(len(words))))
+	}
+
+	splitlist = append(splitlist, s[wordStart:])
+
+	resultstring := []string{}
+
+	for _, substring := range splitlist {
+		if len(substring) <= 1 {
+			resultstring = append(resultstring, substring)
+		} else {
+			resultstring = append(resultstring, inferSpaces(substring))
+
+		}
+	}
+
+	return strings.Join(resultstring, "")
+}
+
+// Adapted from https://stackoverflow.com/a/11642687;
+// used internally after spaces and punctuation are split
+func inferSpaces(s string) string {
+	if !populatedWordData {
+		words := strings.Split(wordsByFrequency, "\n")
+		wordCost = make(map[string]float64)
+		maxWord = 0
+
+		for i, word := range words {
+			if len(word) > maxWord {
+				maxWord = len(word)
+			}
+			wordCost[word] = math.Log(float64(i+1) * math.Log(float64(len(words))))
+		}
+		populatedWordData = true
 	}
 
 	cost := make([]float64, len(s)+1)
