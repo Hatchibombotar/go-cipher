@@ -16,13 +16,11 @@ var wordCost map[string]float64
 
 // Function to infer spaces in a string without spaces.
 func InferSpaces(s string) string {
-	s = FormatString(s, &FormatOptions{RemoveUnknown: false, CaseMode: LowerCaseFormatting})
-
 	splitlist := []string{}
 	wordStart := 0
 
 	for i, char := range s {
-		if 'a' <= char && char <= 'z' {
+		if ('a' <= char && char <= 'z') || ('A' <= char && char <= 'Z') {
 
 		} else {
 			splitlist = append(splitlist, s[wordStart:i])
@@ -73,7 +71,7 @@ func inferSpaces(s string) string {
 
 		for k := 1; k <= maxWord && i-k >= 0; k++ {
 			c := cost[i-k]
-			word := s[i-k : i]
+			word := strings.ToLower(s[i-k : i])
 			wordCost, ok := wordCost[word]
 			if !ok {
 				wordCost = math.MaxFloat64 // Large cost if the word is not found.
