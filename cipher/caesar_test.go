@@ -14,3 +14,12 @@ func TestDecodeCaesar(t *testing.T) {
 		t.Fatalf("Expected: %s, Actual: %s", expected, actual)
 	}
 }
+
+func TestDecodeCaesarWithCapitals(t *testing.T) {
+	encoded := "Olssv, Dvysk"
+	expected := "Hello, World"
+	actual := cipher.DecodeCaesarCipher(encoded, -7)
+	if expected != actual {
+		t.Fatalf("Expected: %s, Actual: %s", expected, actual)
+	}
+}

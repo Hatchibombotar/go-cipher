@@ -1,23 +1,24 @@
 package cipher
 
-import (
-	"strings"
-
-	"github.com/Hatchibombotar/go-cipher/utils"
-)
-
 func DecodeCaesarCipher(text string, steps int) string {
 	decoded := ""
 	for _, char := range text {
-		alpha_index := strings.IndexRune(utils.Alphabet, char)
-		if alpha_index == -1 {
-			decoded += string(char)
-		} else {
-			new_index := (alpha_index + steps) % len(utils.Alphabet)
+		if 'a' <= char && char <= 'z' {
+			alpha_index := int(char) - 'a'
+			new_index := (alpha_index + steps) % 26
 			if new_index < 0 {
-				new_index += len(utils.Alphabet)
+				new_index += 26
 			}
-			decoded += string(utils.Alphabet[new_index])
+			decoded += string(rune(new_index + 'a'))
+		} else if 'A' <= char && char <= 'Z' {
+			alpha_index := int(char) - 'A'
+			new_index := (alpha_index + steps) % 26
+			if new_index < 0 {
+				new_index += 26
+			}
+			decoded += string(rune(new_index + 'A'))
+		} else {
+			decoded += string(char)
 		}
 	}
 	return decoded
