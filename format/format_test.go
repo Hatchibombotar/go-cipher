@@ -59,7 +59,7 @@ func TestFormatUnchangedCase(t *testing.T) {
 
 func TestRemoveUnknown(t *testing.T) {
 	str := "Hello, World!"
-	expected := "hello world"
+	expected := "HelloWorld"
 	op := format.FormatOptions{
 		RemoveUnknown: true,
 		CaseMode:      format.UnchangedCaseFormatting,

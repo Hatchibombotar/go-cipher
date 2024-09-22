@@ -2,8 +2,6 @@ package format
 
 import (
 	"strings"
-
-	"github.com/Hatchibombotar/go-cipher/utils"
 )
 
 type FormattingMode int
@@ -45,7 +43,7 @@ func FormatString(str string, op *FormatOptions) string {
 	new_str := ""
 	if op.RemoveUnknown {
 		for _, char := range str {
-			if strings.ContainsRune(utils.Alphabet, char) {
+			if 'a' <= char && char <= 'z' || 'A' <= char && char <= 'Z' {
 				new_str += string(char)
 			}
 		}
