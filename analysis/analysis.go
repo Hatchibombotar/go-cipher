@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"slices"
 
-	"github.com/Hatchibombotar/go-cipher/format"
 	"github.com/Hatchibombotar/go-cipher/utils"
 
 	"github.com/xuri/excelize/v2"
@@ -16,18 +15,18 @@ type AnalysisData struct {
 	Tetragrams map[string]int `json:"tetragrams"`
 }
 
-func FullAnalysis(text string) AnalysisData {
-	corpus := format.FormatString(text, &format.FormatOptions{CaseMode: format.LowerCaseFormatting, RemoveUnknown: true})
-	corpus_monograms := CountMonograms(corpus)
-	corpus_tetragrams := CountNGrams(corpus, 4)
+// func FullAnalysis(text string) AnalysisData {
+// 	corpus := format.FormatString(text, &format.FormatOptions{CaseMode: format.LowerCaseFormatting, RemoveUnknown: true})
+// 	corpus_monograms := CountMonograms(corpus)
+// 	corpus_tetragrams := CountNGrams(corpus, 4)
 
-	analysis_data := AnalysisData{
-		Length:     len(corpus),
-		Monograms:  corpus_monograms,
-		Tetragrams: corpus_tetragrams,
-	}
-	return analysis_data
-}
+// 	analysis_data := AnalysisData{
+// 		Length:     len(corpus),
+// 		Monograms:  corpus_monograms,
+// 		Tetragrams: corpus_tetragrams,
+// 	}
+// 	return analysis_data
+// }
 
 func ComparitiveExcelAnalysis(analysis1 AnalysisData, analysis2 AnalysisData) {
 	f := excelize.NewFile()

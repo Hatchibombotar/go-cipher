@@ -53,3 +53,12 @@ func ExportExcel() {
 		fmt.Println(err)
 	}
 }
+
+func IsAlpha(char rune) bool {
+	includeCaps := true
+	if includeCaps {
+		return ('a' <= char && char <= 'z') || ('A' <= char && char <= 'Z')
+	} else {
+		return 'a' <= char && char <= 'z'
+	}
+}
