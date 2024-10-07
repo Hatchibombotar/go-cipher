@@ -33,7 +33,7 @@ func TestBigrams(t *testing.T) {
 	}
 }
 
-func TestTrirams(t *testing.T) {
+func TestTrigrams(t *testing.T) {
 	text := "Hello there how are you?"
 	expected := map[string]int{
 		"hel": 1,
