@@ -32,6 +32,20 @@ func TestBigrams(t *testing.T) {
 		t.Fatal("Expected:", expected, "Actual:", ngrams)
 	}
 }
+func TestBounds(t *testing.T) {
+	text := "hihihi"
+	expected := map[string]int{
+		"hi": 3,
+		"ih": 2,
+	}
+	ngrams := analysis.CountNGrams(text, 2)
+
+	if !reflect.DeepEqual(expected, ngrams) {
+		fmt.Println("expected", expected)
+		fmt.Println("recieved", ngrams)
+		t.Fatal("Expected:", expected, "Actual:", ngrams)
+	}
+}
 
 func TestTrigrams(t *testing.T) {
 	text := "Hello there how are you?"
