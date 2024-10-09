@@ -24,7 +24,11 @@ func TestBigrams(t *testing.T) {
 		"yo": 1,
 		"ou": 1,
 	}
-	ngrams := analysis.CountNGrams(text, 2)
+	ngrams, err := analysis.CountNGrams(text, 2)
+
+	if err != nil {
+		t.Fatal(err)
+	}
 
 	if !reflect.DeepEqual(expected, ngrams) {
 		fmt.Println("expected", expected)
@@ -38,7 +42,11 @@ func TestBounds(t *testing.T) {
 		"hi": 3,
 		"ih": 2,
 	}
-	ngrams := analysis.CountNGrams(text, 2)
+	ngrams, err := analysis.CountNGrams(text, 2)
+
+	if err != nil {
+		t.Fatal(err)
+	}
 
 	if !reflect.DeepEqual(expected, ngrams) {
 		fmt.Println("expected", expected)
@@ -60,7 +68,11 @@ func TestTrigrams(t *testing.T) {
 		"are": 1,
 		"you": 1,
 	}
-	ngrams := analysis.CountNGrams(text, 3)
+	ngrams, err := analysis.CountNGrams(text, 3)
+
+	if err != nil {
+		t.Fatal(err)
+	}
 
 	if !reflect.DeepEqual(expected, ngrams) {
 		fmt.Println("expected", expected)
