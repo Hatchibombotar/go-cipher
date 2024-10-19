@@ -2,6 +2,7 @@ package utils
 
 import (
 	"fmt"
+	"math/big"
 	"os"
 
 	"github.com/xuri/excelize/v2"
@@ -63,28 +64,16 @@ func IsAlpha(char rune) bool {
 	}
 }
 
-func gcdExtended(a, b int) (int, int, int) {
-	if a == 0 {
-		return b, 0, 1
-	}
-
-	gcd, x1, y1 := gcdExtended(b%a, a)
-	x := y1 - (b/a)*x1
-	y := x1
-
-	return gcd, x, y
-}
-
 // Function to find the modular inverse of 'base' mod 'number'
 func ModularInverse(base int, mod int) (int, bool) {
-	gcd, x, _ := gcdExtended(base, mod)
+	baseInt := big.NewInt(int64(base))
+	modInt := big.NewInt(int64(mod))
 
-	// If gcd(base, mod) is not 1, inverse doesn't exist
-	if gcd != 1 {
-		return -1, false // No inverse exists
+	result := new(big.Int)
+
+	if result.ModInverse(baseInt, modInt) == nil {
+		return 0, false
 	}
 
-	// x might be negative, so we normalize it
-	inverse := (x%mod + mod) % mod
-	return inverse, true
+	return int(result.Int64()), true
 }
