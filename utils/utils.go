@@ -62,3 +62,29 @@ func IsAlpha(char rune) bool {
 		return 'a' <= char && char <= 'z'
 	}
 }
+
+func gcdExtended(a, b int) (int, int, int) {
+	if a == 0 {
+		return b, 0, 1
+	}
+
+	gcd, x1, y1 := gcdExtended(b%a, a)
+	x := y1 - (b/a)*x1
+	y := x1
+
+	return gcd, x, y
+}
+
+// Function to find the modular inverse of 'base' mod 'number'
+func ModularInverse(base int, mod int) (int, bool) {
+	gcd, x, _ := gcdExtended(base, mod)
+
+	// If gcd(base, mod) is not 1, inverse doesn't exist
+	if gcd != 1 {
+		return -1, false // No inverse exists
+	}
+
+	// x might be negative, so we normalize it
+	inverse := (x%mod + mod) % mod
+	return inverse, true
+}

@@ -5,11 +5,11 @@ import (
 	"testing"
 
 	"github.com/Hatchibombotar/go-cipher/analysis"
-	"github.com/Hatchibombotar/go-cipher/utils"
+	"github.com/Hatchibombotar/go-cipher/corpus"
 )
 
 func TestIoC(t *testing.T) {
-	text := utils.ReadFile("../corpus.txt")
+	text := corpus.GetRawCorpus()
 	ioc, err := analysis.MonogramIndexOfCoincidence(text)
 	if err != nil {
 		t.Fatalf("Error is not nil.")

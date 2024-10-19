@@ -13,7 +13,7 @@ func TestPolybiusCipher(t *testing.T) {
 
 	actual, err := cipher.DecodePolybiusCipher(encoded, key)
 	if err != nil {
-		panic(err)
+		t.Fatal("Did not expect error: ", err)
 	}
 	if expected != actual {
 		t.Fatalf("Expected: %s, Actual: %s", expected, actual)

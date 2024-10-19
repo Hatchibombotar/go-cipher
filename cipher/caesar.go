@@ -6,14 +6,14 @@ func DecodeCaesarCipher(text string, steps int) string {
 		if 'a' <= char && char <= 'z' {
 			alpha_index := int(char) - 'a'
 			new_index := (alpha_index + steps) % 26
-			if new_index < 0 {
+			for new_index < 0 {
 				new_index += 26
 			}
 			decoded += string(rune(new_index + 'a'))
 		} else if 'A' <= char && char <= 'Z' {
 			alpha_index := int(char) - 'A'
 			new_index := (alpha_index + steps) % 26
-			if new_index < 0 {
+			for new_index < 0 {
 				new_index += 26
 			}
 			decoded += string(rune(new_index + 'A'))

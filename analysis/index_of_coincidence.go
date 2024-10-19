@@ -21,7 +21,7 @@ func MonogramIndexOfCoincidence(text_raw string) (float64, error) {
 	frequency_analysis := CountMonograms(text)
 	for i := range 26 {
 		letter := 'a' + i
-		letter_str := string(rune(letter))
+		letter_str := rune(letter)
 		n := float64(frequency_analysis[letter_str])
 
 		ioc += (n * (n - 1)) / (N * (N - 1))
