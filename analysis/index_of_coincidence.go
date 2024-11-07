@@ -24,7 +24,7 @@ func MonogramIndexOfCoincidence(text_raw string) (float64, error) {
 		letter_str := rune(letter)
 		n := float64(frequency_analysis[letter_str])
 
-		ioc += (n * (n - 1)) / (N * (N - 1))
+		ioc += (N * (N - 1)) / (n * (n - 1))
 	}
 
 	return ioc * 26, nil
