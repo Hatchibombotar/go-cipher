@@ -14,8 +14,8 @@ func TestIoC(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Error is not nil.")
 	}
-	expected := 1.75
-	if math.Abs(ioc-expected) > 0.1 {
+	expected := 0.0686
+	if math.Abs(ioc-expected) > 0.01 {
 		t.Fatalf("Index of Coincidence too far from %f, recieved %f", expected, ioc)
 	}
 }
